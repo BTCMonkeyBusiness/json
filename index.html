@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemple d'affichage de données JSON avec AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="myData"></div>
+
+    <script>
+      $(document).ready(function() {
+        $.getJSON("./fichier.json", function(data) {
+          // Créez une liste
+          var list = $("<ul>");
+
+          // Parcourez les données et ajoutez-les à la liste
+          $.each(data, function(index, value) {
+            var item = $("<li>").text(value);
+            list.append(item);
+          });
+
+          // Ajoutez la liste à la page
+          $("#myData").append(list);
+        });
+      });
+    </script>
+  </body>
+</html>
